@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+
+
+empty:
+  first_name: nil
+  last_name: nil
+  admin: false
+
+# two:
+#   first_name: MyString
+#   last_name: MyString
+#   admin: false

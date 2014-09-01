@@ -1,0 +1,29 @@
+<% if @report.line_items.blank? %>
+	<p>There is no data in this report, would you like to <a href="#" data-toggle="modal" data-target="#importModal">Import Date into this Report</a>?</p>
+<% else %>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Campaign</th>
+				<th>Site</th>
+				<th>Impressions</th>
+				<th>Clicks</th>
+				<th>CTR</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @report.line_items.each do |line_item| %>
+				<tr>
+					<td><%= line_item.date %></td>
+					<td><%= line_item.campaign %></td>
+					<td><%= link_to line_item.site.name, site_path(line_item.site) %></td>
+					<td><%= line_item.impressions %></td>
+					<td><%= line_item.clicks %></td>
+					<td><%= number_with_precision(line_item.ctr) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</div>
+<% end %>

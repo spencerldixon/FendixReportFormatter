@@ -1,0 +1,29 @@
+<h1>Reports</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Report/Campaign Name</th>
+      <th>Created by</th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.name %></td>
+        <td><%= report.user.first_name.titleize %></td>
+        <td><%= link_to 'Show', report %></td>
+        <td><%= link_to 'Edit', edit_report_path(report) %></td>
+        <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= button_to 'New Report', new_report_path, method: :get, class: "btn btn-large btn-primary" %>

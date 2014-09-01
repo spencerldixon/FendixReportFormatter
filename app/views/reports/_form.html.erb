@@ -1,0 +1,24 @@
+<div class="form-horizontal">
+  <%= form_for(@report) do |f| %>
+    <% if @report.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
+
+        <ul>
+        <% @report.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name, class: "col-sm-2 control-label" %>
+      <div class="col-sm-5"><%= f.text_field :name, autofocus: true, class: "form-control" %></div>
+    </div>
+
+    <div class="col-sm-5 col-sm-offset-2">
+      <%= f.submit "Save", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
