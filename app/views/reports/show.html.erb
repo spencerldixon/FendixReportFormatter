@@ -84,39 +84,57 @@
 	google.setOnLoadCallback(drawChart);
 	function drawChart() {
 		  var data = google.visualization.arrayToDataTable(<%= raw get_impressions_array(@report) %>);
-		  	/*[
-		    ['Site', 'Impressions'],
-		    ['Blackpool',  1000],
-		    ['East Kent',  1170]
-		  ]*/
-		  	
-
 		  var options = {
 		    title: 'Impressions by Site',
 		    hAxis: {title: 'Campaign Locations', titleTextStyle: {color: 'black'}}
 		  };
-
-		  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+		  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div_impressions'));
 		  chart.draw(data, options);
 	}
 </script>
 
+<script type="text/javascript">
+  google.load("visualization", "1", {packages:["corechart"]});
+	google.setOnLoadCallback(drawChart);
+	function drawChart() {
+		  var data = google.visualization.arrayToDataTable(<%= raw get_clicks_array(@report) %>);
+		  var options = {
+		    title: 'Impressions by Clicks',
+		    hAxis: {title: 'Campaign Locations', titleTextStyle: {color: 'black'}}
+		  };
+		  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div_clicks'));
+		  chart.draw(data, options);
+	}
+</script>
+
+<script type="text/javascript">
+  google.load("visualization", "1", {packages:["corechart"]});
+	google.setOnLoadCallback(drawChart);
+	function drawChart() {
+		  var data = google.visualization.arrayToDataTable(<%= raw get_ctr_array(@report) %>);
+		  var options = {
+		    title: 'Impressions by CTR',
+		    hAxis: {title: 'Campaign Locations', titleTextStyle: {color: 'black'}}
+		  };
+		  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div_ctr'));
+		  chart.draw(data, options);
+	}
+</script>
 
 <div class="row">
 	<div class="col-lg-4">
-		<div id="chart_div"></div>
+		<div id="chart_div_impressions"></div>
 	</div>
 
 	<div class="col-lg-4">
-		<div id="chart_div_2"></div>
+		<div id="chart_div_clicks"></div>
 	</div>
 
 	<div class="col-lg-4">
-		<div id="chart_div_3"></div>
+		<div id="chart_div_ctr"></div>
 	</div>
 </div>
 
-<%= get_impressions_array(@report) %>
 
 <div class="no-pdf">
 <%= link_to 'Edit', edit_report_path(@report) %> |
