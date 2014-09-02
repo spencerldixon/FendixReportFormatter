@@ -11,27 +11,19 @@ class ReportsController < ApplicationController
   # GET /reports/1.json
   def show
     respond_to do |format|
-      format.html {
-        @sites = set_report.sites
-        @hash = Gmaps4rails.build_markers(@sites) do |site, marker|
-          marker.lat site.latitude
-          marker.lng site.longitude
-          marker.infowindow "Impressions: 123\nClicks: 123\nCTR: 0.1%"
-        end
-      }
-      
-      format.pdf {
-        @sites = set_report.sites
-        @hash = Gmaps4rails.build_markers(@sites) do |site, marker|
-          marker.lat site.latitude
-          marker.lng site.longitude
-          marker.infowindow "Impressions: 123\nClicks: 123\nCTR: 0.1%"
-        end
+      @sites = set_report.sites
+      @hash = Gmaps4rails.build_markers(@sites) do |site, marker|
+        marker.lat site.latitude
+        marker.lng site.longitude
+        marker.infowindow "Impressions: 123\nClicks: 123\nCTR: 0.1%"
+      end
 
+      format.html
+      format.pdf {
         html = render_to_string(:layout => false , :action => "show", :formats => :html)
-        kit = PDFKit.new(html, :disable_javascript => true)
+        kit = PDFKit.new(html)
         kit.stylesheets << "#{Rails.root}/app/assets/stylesheets/application.css"
-        send_data(kit.to_pdf, :filename => "test_pdf", :type => "application/pdf", :disposition => "attachment")
+        send_data(kit.to_pdf, :filename => "#{@report.name}_Report_#{Time.now.to_s.gsub(" ", "_")}", :type => "application/pdf", :disposition => "attachment")
       }
     end
   end
