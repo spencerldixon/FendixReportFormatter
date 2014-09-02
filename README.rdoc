@@ -1,28 +1,13 @@
-== README
+== Fendix Report Generator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application takes a CSV file from Switch Concepts' adserver and uses it to create a nicely formatted report and geographical view of advertising locations. This can then be exported as a PDF and sent to agencies.
 
-Things you may want to cover:
+How to use:
 
-* Ruby version
+* rake db:create db:migrate
 
-* System dependencies
+* rake db:seed (Creates admin users from seed file)
 
-* Configuration
+* Import a CSV
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Download a PDF
