@@ -8,6 +8,6 @@ PDFKit.configure do |config|
 	}
  
  # Use only if your external hostname is unavailable on the server.
- config.root_url = "http://localhost/"
- config.verbose = false
+ #config.root_url = "http://localhost/"
+ #config.verbose = false
 end
