@@ -8,6 +8,11 @@ PDFKit.configure do |config|
 	}
  
  # Use only if your external hostname is unavailable on the server.
- #config.root_url = "http://localhost/"
- #config.verbose = false
+	if Rails.env.development?
+ 		config.root_url = "http://localhost/"
+	elsif Rails.env.production?
+		config.root_url = "http://fendix-report-formatter.herokuapp.com/"
+	end
+
+ 	config.verbose = false
 end
