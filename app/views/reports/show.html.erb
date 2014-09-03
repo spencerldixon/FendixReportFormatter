@@ -42,8 +42,8 @@
 					<h4>Best Performing Site by CTR:</h4>
 				</div>
 				<div class="col-lg-6">
-					<h4 class="text-primary">Blank</h4>
-					<h4 class="text-primary">Blank</h4>
+					<h4 class="text-primary"><%= @report.earliest_date %></h4>
+					<h4 class="text-primary"><%= @report.latest_date %></h4>
 					<h4 class="text-primary"><%= number_with_delimiter(@report.total_impressions, :delimiter => ',') %></h4>
 					<h4 class="text-primary"><%= number_with_delimiter(@report.total_clicks, :delimiter => ',') %></h4>
 					<h4 class="text-primary"><%= number_with_precision(@report.average_ctr, :precision => 3) %>%</h4>

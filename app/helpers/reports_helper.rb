@@ -22,11 +22,11 @@ module ReportsHelper
 	end
 
 	def get_ctr_array report
-		hash = report.line_items.group(:site_id).sum(:ctr)
+		hash = report.line_items.group(:site_id).average(:ctr)
 		array_headers = ['Site', 'CTR']
 		new_hash = hash.map do |k, v|
 			site = Site.find(k)
-			k = site.name, (v*1000).to_f
+			k = site.name, v.to_f
 		end
 		array = new_hash.to_a
 		array.unshift(array_headers)

@@ -15,7 +15,6 @@ class ReportsController < ApplicationController
       @hash = Gmaps4rails.build_markers(@sites) do |site, marker|
         marker.lat site.latitude
         marker.lng site.longitude
-        marker.infowindow "Impressions: 123\nClicks: 123\nCTR: 0.1%"
       end
 
       format.html

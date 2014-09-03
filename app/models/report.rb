@@ -22,4 +22,14 @@ class Report < ActiveRecord::Base
   	total = self.line_items.sum(:ctr)
   	total / self.line_items.count
   end
+
+  def earliest_date
+    line_item = self.line_items.order('date ASC').first
+    line_item.date
+  end
+
+  def latest_date
+    line_item = self.line_items.order('date DESC').first
+    line_item.date
+  end
 end

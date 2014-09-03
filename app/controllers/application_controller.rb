@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
 
-  #rescue_from StandardError, with: :rescue_standard_exception
+  rescue_from StandardError, with: :rescue_standard_exception
 
   def rescue_standard_exception(exception)
 			logger.warn "Error! #{exception}"

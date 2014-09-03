@@ -12,7 +12,7 @@ class LineItem < ActiveRecord::Base
 					:site => Site.where(name: row[2]).first_or_create,
 					:impressions => row[3], 
 					:clicks => row[4],
-					:ctr => (row[4].to_f/row[3].to_f),
+					:ctr => ((row[4].to_f/row[3].to_f)*100),
 					:report => report).first_or_create
 				record.save!
 			end
