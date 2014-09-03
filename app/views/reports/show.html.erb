@@ -32,17 +32,23 @@
 				<h3>Your Campaign Summary</h3>
 			</div>
 
-			<div class="col-lg-6">
-				<h4>Total Page Impressions:</h4>
-				<h4>Total Clicks:</h4>
-				<h4>Average CTR:</h4>
-				<h4>Best Performing Site by CTR:</h4>
-			</div>
-			<div class="col-lg-6">
-				<h4 class="text-primary"><%= number_with_delimiter(@report.total_impressions, :delimiter => ',') %></h4>
-				<h4 class="text-primary"><%= number_with_delimiter(@report.total_clicks, :delimiter => ',') %></h4>
-				<h4 class="text-primary"><%= @report.average_ctr %></h4>
-				<h4 class="text-primary"><%= @report.best_performing_site %></h4>
+			<div class="stats">
+				<div class="col-lg-6">
+					<h4>Report Start Date:</h4>
+					<h4>Report End Date:</h4>
+					<h4>Total Page Impressions:</h4>
+					<h4>Total Clicks:</h4>
+					<h4>Average CTR:</h4>
+					<h4>Best Performing Site by CTR:</h4>
+				</div>
+				<div class="col-lg-6">
+					<h4 class="text-primary">Blank</h4>
+					<h4 class="text-primary">Blank</h4>
+					<h4 class="text-primary"><%= number_with_delimiter(@report.total_impressions, :delimiter => ',') %></h4>
+					<h4 class="text-primary"><%= number_with_delimiter(@report.total_clicks, :delimiter => ',') %></h4>
+					<h4 class="text-primary"><%= number_with_precision(@report.average_ctr, :precision => 3) %>%</h4>
+					<h4 class="text-primary"><%= @report.best_performing_site %></h4>
+				</div>
 			</div>
 		</div>
 
@@ -101,7 +107,7 @@
 						<td><%= link_to line_item.site.name, site_path(line_item.site) %></td>
 						<td><%= line_item.impressions %></td>
 						<td><%= line_item.clicks %></td>
-						<td><%= line_item.ctr %></td>
+						<td><%= number_with_precision(line_item.ctr, :precision => 3) %>%</td>
 					</tr>
 				<% end %>
 			</tbody>
