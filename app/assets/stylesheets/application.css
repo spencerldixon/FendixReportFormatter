@@ -23,6 +23,13 @@
 	  page-break-before: always !important;
 	}
 	.col-lg-4, .graph { width: 100% !important; }
+	table, th, td {
+	  border-collapse:collapse;
+	  border: 1px solid #87888A;
+	  text-align:center;
+	  font-size: 80%;
+	}
+	table { width: 100% !important;}
 }
 
 #logo { 

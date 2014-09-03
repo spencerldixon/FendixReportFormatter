@@ -1,4 +1,12 @@
-<h1>Reports</h1>
+<div class="page-header">
+  <h1>Reports</h1>
+</div>
+
+<% if database_count > 1000 %>
+  <div class="alert alert-info" role="alert">Please note, there is a database limit of 10,000 rows, we're currently at <%= database_count %> rows. You can save space by deleting reports that are no longer needed.</div>
+<% elsif database_count > 5000 %>
+  <div class="alert alert-danger" role="alert">There is a database limit of 10,000 rows, we're currently at <%= database_count %> rows and this application has to share space with others. Please save some space by deleting reports that are no longer needed.</div>
+<% end %>
 
 <table class="table">
   <thead>
