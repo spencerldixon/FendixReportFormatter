@@ -21,5 +21,6 @@ module ReportFormatter
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     # config.middleware.use PDFKit::Middleware, :print_media_type => true
+    #config.action_controller.asset_host = "#{Rails.root}"
   end
 end

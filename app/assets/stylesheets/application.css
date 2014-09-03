@@ -22,4 +22,11 @@
 	  display: block !important;
 	  page-break-before: always !important;
 	}
+	.col-lg-4, .graph { width: 100% !important; }
+}
+
+#logo { 
+	float: right;
+	position: relative;
+	top: -48px;
 }

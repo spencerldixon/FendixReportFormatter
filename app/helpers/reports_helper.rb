@@ -26,7 +26,7 @@ module ReportsHelper
 		array_headers = ['Site', 'CTR']
 		new_hash = hash.map do |k, v|
 			site = Site.find(k)
-			k = site.name, v
+			k = site.name, (v*1000).to_f
 		end
 		array = new_hash.to_a
 		array.unshift(array_headers)
